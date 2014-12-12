@@ -158,5 +158,39 @@ test('parse', function (t) {
         ]
     }, 'should not include children of registered components in AST');
 
+    html = '<div><my-component thing="one">ok</my-component><my-component thing="two">ok</my-component></div>';
+    parsed = HTML.parse(html, {
+        components: {
+            'my-component': 'something'
+        }
+    });
+
+    t.deepEqual(parsed, {
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        selfClosing: false,
+        children: [
+            {
+                type: 'component',
+                name: 'my-component',
+                attrs: {
+                    thing: 'one'
+                },
+                selfClosing: false,
+                children: []
+            },
+            {
+                type: 'component',
+                name: 'my-component',
+                attrs: {
+                    thing: 'two'
+                },
+                selfClosing: false,
+                children: []
+            }
+        ]
+    })
+
     t.end();
 });

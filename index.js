@@ -1,8 +1,4 @@
-var parse = require('./lib/parse');
-var stringify = require('./lib/stringify');
-
-
 module.exports = {
-    parse: parse,
-    stringify: stringify
+    parse: require('./lib/parse'),
+    stringify: require('./lib/stringify')
 };
