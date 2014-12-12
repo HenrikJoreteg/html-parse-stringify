@@ -135,6 +135,10 @@ properties:
 - `children` - it will still have a `children` array, but it will always be empty.
 
 
+## credits
+
+If this sounds interesting you should probably follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) and [@Philip_Roberts](twitter.com/philip_roberts) on twitter to see how this all turns out. 
+
 ## license
 
 MIT
