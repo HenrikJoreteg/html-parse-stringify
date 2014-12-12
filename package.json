@@ -1,0 +1,30 @@
+{
+  "name": "html-parse-stringify",
+  "description": "Parses well-formed HTML (meaning all tags closed) into an AST and back. quickly.",
+  "version": "0.0.0",
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "bugs": {
+    "url": "https://github.com/henrikjoreteg/html-parse-stringify/issues"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.10",
+    "precommit-hook": "^1.0.7",
+    "tape": "^3.0.3"
+  },
+  "homepage": "https://github.com/henrikjoreteg/html-parse-stringify",
+  "keywords": [
+    "html",
+    "parse",
+    "stringify",
+    "ast"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/henrikjoreteg/html-parse-stringify"
+  },
+  "scripts": {
+    "test": "node test/index.js | tap-spec"
+  }
+}
