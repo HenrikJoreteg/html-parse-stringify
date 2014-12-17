@@ -26,5 +26,8 @@
   },
   "scripts": {
     "test": "node test/index.js | tap-spec"
+  },
+  "dependencies": {
+    "void-elements": "^1.0.0"
   }
 }

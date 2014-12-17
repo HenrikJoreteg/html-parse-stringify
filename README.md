@@ -73,7 +73,7 @@ console.log(ast);
 
     // whether this is a self-closing tag
     // such as <img/>
-    selfClosing: false,
+    voidElement: false,
 
     // an array of child nodes
     // we see the same structure
@@ -83,7 +83,7 @@ console.log(ast);
             type: 'tag',
             name: 'p',
             attrs: {},
-            selfClosing: false,
+            voidElement: false,
             children: [
                 // this is a text node
                 // it also has a `type`
@@ -110,7 +110,7 @@ properties:
 - `type` - will always be `tag` for this type of node
 - `name` - tag name, such as 'div'
 - `attrs` - an object of key/value pairs. If an attribute has multiple space-separated items such as classes, they'll still be in a single string, for example: `class: "class1 class2"`
-- `selfClosing` - `true` or `false`. Whether this tag has a self-closing slash such as: `<img/>`, or `<input/>`
+- `voidElement` - `true` or `false`. Whether this tag is a known void element as defined by [spec](http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements).
 - `children` - array of child nodes. Note that any continuous string of text is a text node child, see below.
 
 ### 2. text
@@ -131,7 +131,7 @@ properties:
 - `type` - will always be `component` for this type of node
 - `name` - tag name, such as 'div'
 - `attrs` - an object of key/value pairs. If an attribute has multiple space-separated items such as classes, they'll still be in a single string, for example: `class: "class1 class2"`
-- `selfClosing` - `true` or `false`. Whether this tag has a self-closing slash such as: `<img/>`, or `<input/>`
+- `voidElement` - `true` or `false`. Whether this tag is a known void element as defined by [spec](http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements).
 - `children` - it will still have a `children` array, but it will always be empty.
 
 

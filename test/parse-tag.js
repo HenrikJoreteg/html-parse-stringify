@@ -14,7 +14,7 @@ test('parseTag', function (t) {
             quote: 'me '
         },
         name: 'div',
-        selfClosing: false,
+        voidElement: false,
         children: []
     });
 
@@ -26,7 +26,7 @@ test('parseTag', function (t) {
             class: 'single quoted thing'
         },
         name: 'something-custom',
-        selfClosing: false,
+        voidElement: false,
         children: []
     });
 
@@ -36,7 +36,7 @@ test('parseTag', function (t) {
         type: 'tag',
         attrs: {},
         name: 'p',
-        selfClosing: false,
+        voidElement: false,
         children: []
     });
 
@@ -49,7 +49,7 @@ test('parseTag', function (t) {
             alt: 'sweet picture'
         },
         name: 'img',
-        selfClosing: true,
+        voidElement: true,
         children: []
     });
 
