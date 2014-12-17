@@ -53,5 +53,15 @@ test('parseTag', function (t) {
         children: []
     });
 
+    tag = '<br>';
+
+    t.deepEqual(parseTag(tag), {
+        type: 'tag',
+        attrs: {},
+        name: 'br',
+        selfClosing: true,
+        children: []
+    });
+
     t.end();
 });
