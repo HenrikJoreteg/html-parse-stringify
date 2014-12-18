@@ -1,10 +1,11 @@
+/* global console */
 var test = require('tape');
 var HTML = require('../index');
 
 
 test('parse', function (t) {
     var html = '<div class="oh"><p></p></div>';
-    var parsed = HTML.parse(html);    
+    var parsed = HTML.parse(html);
     t.deepEqual(parsed, [{
         type: 'tag',
         name: 'div',
@@ -278,12 +279,13 @@ test('simple speed sanity check', function (t) {
     var waitLoopSize = 10000000;
     var groups = i / groupSize;
     var html = '<html><head><title>Some page</title></head><body class="hey there"><img src="someURL"><h3>Hey, we need content</h3><br></body></html>';
-    
+
     var parse = HTML.parse;
     var times = [];
     var count;
     var waitCount;
     var total = 0;
+    var start, stepAverage;
 
     console.log('running ' + i + ' iterations...');
 
@@ -296,10 +298,10 @@ test('simple speed sanity check', function (t) {
                 parse(html);
             }
             var diff = Date.now() - start;
-            var average = diff/groupSize
-            console.log('group '  + (groups - (i / groupSize)) + ': ' + average);
-            times.push(average);
-            total += average;
+            stepAverage = diff/groupSize;
+            console.log('group '  + (groups - (i / groupSize)) + ': ' + stepAverage);
+            times.push(stepAverage);
+            total += stepAverage;
             waitCount = waitLoopSize;
             // forcing a bit of a pause between tests
             while(waitCount--) {}
@@ -308,8 +310,8 @@ test('simple speed sanity check', function (t) {
     }
 
     // trim off first
-    // it's always a slower outlier 
-    // with higher variability that 
+    // it's always a slower outlier
+    // with higher variability that
     // makes it harder to find differences
     times.shift();
 
@@ -320,6 +322,6 @@ test('simple speed sanity check', function (t) {
     console.log('max', max);
     console.log('min', min);
     console.log('avg', average);
-    
+
     t.end();
 });
