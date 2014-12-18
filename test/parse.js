@@ -270,6 +270,28 @@ test('parse', function (t) {
         ]
     }], 'should handle registered void tags if self-closing');
 
+
+    html = '<div> 9 <input type="text"/> 10 </div>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: ' 9 ' },
+            {
+                type: 'tag',
+                name: 'input',
+                attrs: {
+                    type: 'text'
+                },
+                children: [],
+                voidElement: true,
+            },
+            { type: 'text', content: ' 10 ' },
+        ]
+    }], 'should not give voidElements children');
     t.end();
 });
 
