@@ -9,6 +9,7 @@
   "devDependencies": {
     "jshint": "^2.5.10",
     "precommit-hook": "^1.0.7",
+    "tap-spec": "^2.1.2",
     "tape": "^3.0.3"
   },
   "homepage": "https://github.com/henrikjoreteg/html-parse-stringify",
