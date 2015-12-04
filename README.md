@@ -37,7 +37,7 @@ It has two methods:
 
 ## `.parse(htmlString, options)`
 
-Takes a sting of HTML and turns it into an AST, the only option you can currently pass is an object of registered `components` whose children will be ignored when generating the AST.
+Takes a string of HTML and turns it into an AST, the only option you can currently pass is an object of registered `components` whose children will be ignored when generating the AST.
 
 ## `.stringify(AST)`
 
