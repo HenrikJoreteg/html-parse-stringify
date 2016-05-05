@@ -292,6 +292,65 @@ test('parse', function (t) {
             { type: 'text', content: ' 10 ' },
         ]
     }], 'should not give voidElements children');
+
+    html = '<div></div>\n';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: []
+    },{
+        type: 'text', content: '\n'
+    }], 'should not explode on trailing whitespace');
+
+    html = '<div>Hi</div> There ';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'Hi' }
+        ]
+    },{
+        type: 'text', content: ' There '
+    }], 'should handle trailing text nodes at the top-level');
+
+    html = '<div>Hi</div> There <span>something</span> <a></a>else ';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'Hi' }
+        ]
+    },{
+        type: 'text', content: ' There '
+    },{
+        type: 'tag',
+        name: 'span',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'something' }
+        ]
+    },{
+        type: 'text', content: ' '
+    },{
+        type: 'tag',
+        name: 'a',
+        attrs: {},
+        voidElement: false,
+        children: []
+    },{
+        type: 'text', content: 'else '
+    }], 'should handle text nodes in the middle of tags at the top-level');
+
     t.end();
 });
 
