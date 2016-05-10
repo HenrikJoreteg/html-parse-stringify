@@ -301,8 +301,6 @@ test('parse', function (t) {
         attrs: {},
         voidElement: false,
         children: []
-    },{
-        type: 'text', content: '\n'
     }], 'should not explode on trailing whitespace');
 
     html = '<div>Hi</div> There ';
@@ -340,8 +338,6 @@ test('parse', function (t) {
             { type: 'text', content: 'something' }
         ]
     },{
-        type: 'text', content: ' '
-    },{
         type: 'tag',
         name: 'a',
         attrs: {},
@@ -351,6 +347,25 @@ test('parse', function (t) {
         type: 'text', content: 'else '
     }], 'should handle text nodes in the middle of tags at the top-level');
 
+    html = '<div>Hi</div>\n\n <span>There</span> \t ';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'Hi' }
+        ]
+    },{
+        type: 'tag',
+        name: 'span',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'There' }
+        ]
+    }], 'should remove text nodes that are nothing but whitespace');
     t.end();
 });
 
