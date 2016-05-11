@@ -53,5 +53,19 @@ test('parseTag', function (t) {
         children: []
     });
 
+    tag = '<div class="button another-button" onclick="do(\'something\');" onhover=\'do("something else")\'>';
+
+    t.deepEqual(parseTag(tag), {
+        type: 'tag',
+        attrs: {
+            class: 'button another-button',
+            onclick: 'do(\'something\');',
+            onhover: 'do("something else")'
+        },
+        name: 'div',
+        voidElement: false,
+        children: []
+    });
+
     t.end();
 });
