@@ -53,5 +53,18 @@ test('parseTag', function (t) {
         children: []
     });
 
+    tag = '<something-custom non-valued-attribute valued-attribute=\'value\'>';
+
+    t.deepEqual(parseTag(tag), {
+        type: 'tag',
+        attrs: {
+            valued-attribute: 'value',
+            non-valued-attribute: ''
+        },
+        name: 'something-custom',
+        voidElement: false,
+        children: []
+    });
+
     t.end();
 });
