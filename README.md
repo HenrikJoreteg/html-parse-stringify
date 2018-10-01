@@ -12,7 +12,7 @@ But the truth is. If you *could* do this in a whopping grand total of ~600 bytes
 
 Yes. 
 
-React.js essentially pioneered the approach. With Reach you render to a "virtual DOM" whenever you want to, and the virtual DOM can then diff against the real DOM (or the last virtual DOM) and then turn that diff into whatever transformations are necessary to get the *real* DOM to match what you rendered as efficiently as possible.
+React.js essentially pioneered the approach. With React you render to a "virtual DOM" whenever you want to, and the virtual DOM can then diff against the real DOM (or the last virtual DOM) and then turn that diff into whatever transformations are necessary to get the *real* DOM to match what you rendered as efficiently as possible.
 
 As a result, when you're building a single page app, you don't have to worry so much about bindings. Instead, you simple re-render to the virtual DOM whenever you know something's changed. All of a sudden being able to have `change` events for individual properties becomes less important, instead you can just reference those values in your template whenever you think something changed.
 
