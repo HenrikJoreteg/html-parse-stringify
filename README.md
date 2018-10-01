@@ -137,7 +137,7 @@ properties:
 
 ## credits
 
-If this sounds interesting you should probably follow [@HenrikJoreteg](http://twitter.com/henrikjoreteg) and [@Philip_Roberts](twitter.com/philip_roberts) on twitter to see how this all turns out. 
+If this sounds interesting you should probably follow [@HenrikJoreteg](https://twitter.com/henrikjoreteg) and [@Philip_Roberts](https://twitter.com/philip_roberts) on twitter to see how this all turns out. 
 
 ## license
 
