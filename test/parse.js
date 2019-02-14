@@ -317,6 +317,27 @@ test('parse', function (t) {
         type: 'text', content: ' There '
     }], 'should handle trailing text nodes at the top-level');
 
+    html = 'Hi <div>There</div>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'text', content: 'Hi '
+    }, {
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'There' }
+        ]
+    }], 'should handle leading text nodes at the top-level');
+
+
+    html = 'Hi There';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'text', content: 'Hi There'
+    }], 'should handle plain strings of text with no tags');
+
     html = '<div>Hi</div> There <span>something</span> <a></a>else ';
     parsed = HTML.parse(html);
     t.deepEqual(parsed, [{
