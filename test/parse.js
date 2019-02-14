@@ -385,6 +385,41 @@ test('parse', function (t) {
         voidElement: false,children: [ { content: '\n      !function() {\n        var cookies = document.cookie ? document.cookie.split(\';\') : [];\n        //                |   this less than is triggering probems\n        for (var i = 0; i ', type: 'text' } ]
     }], 'should parse a script tag');
 
+    html = '<div>Hi</span>There</div>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'Hi' },
+            { type: 'text', content: 'There' }
+        ]
+    }], 'should skip over closing tags that don\'t match the current tag name');
+
+    html = '<p>Hi There</p></span>root text</p><p>Try again</p>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'p',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'Hi There' }
+        ]
+    },{
+        type: 'text',
+        content: 'root text'
+    }, {
+        type: 'tag',
+        name: 'p',
+        attrs: {},
+        voidElement: false,
+        children: [
+            { type: 'text', content: 'Try again' }
+        ]
+    }], 'should not go lower than the root level (-1)');
     t.end();
 });
 
