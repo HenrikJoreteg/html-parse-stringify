@@ -1,0 +1,6 @@
+test
+.gitignore
+.jshintrc
+.jshintignore
+.travis.yml
+.zuul.yml

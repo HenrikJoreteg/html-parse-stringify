@@ -1,10 +1,10 @@
 {
-  "name": "html-parse-stringify",
+  "name": "@btpoe/html-parse-stringify",
   "description": "Parses well-formed HTML (meaning all tags closed) into an AST and back. quickly.",
-  "version": "1.0.2",
+  "version": "1.0.1",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "bugs": {
-    "url": "https://github.com/henrikjoreteg/html-parse-stringify/issues"
+    "url": "https://github.com/btpoe/html-parse-stringify/issues"
   },
   "dependencies": {
     "void-elements": "^1.0.0"
@@ -18,7 +18,7 @@
     "tape": "^3.0.3",
     "zuul": "^1.16.5"
   },
-  "homepage": "https://github.com/henrikjoreteg/html-parse-stringify",
+  "homepage": "https://github.com/btpoe/html-parse-stringify",
   "keywords": [
     "html",
     "parse",
@@ -29,7 +29,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/henrikjoreteg/html-parse-stringify"
+    "url": "https://github.com/btpoe/html-parse-stringify"
   },
   "scripts": {
     "start": "run-browser test/*",
