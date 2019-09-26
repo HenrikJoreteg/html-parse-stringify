@@ -366,6 +366,25 @@ test('parse', function (t) {
             { type: 'text', content: 'There' }
         ]
     }], 'should remove text nodes that are nothing but whitespace');
+
+    html = `<script>
+      !function() {
+        var cookies = document.cookie ? document.cookie.split(';') : [];
+        //                |   this less than is triggering probems
+        for (var i = 0; i < cookies.length; i++) {
+          var splitted = cookies[i].split('=');
+          var name = splitted[0];
+        }
+      }();
+      </script>`
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'script',
+        attrs: {},
+        voidElement: false,children: [ { content: '\n      !function() {\n        var cookies = document.cookie ? document.cookie.split(\';\') : [];\n        //                |   this less than is triggering probems\n        for (var i = 0; i ', type: 'text' } ]
+    }], 'should parse a script tag');
+
     t.end();
 });
 
