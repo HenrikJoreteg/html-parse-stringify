@@ -385,6 +385,30 @@ test('parse', function (t) {
         voidElement: false,children: [ { content: '\n      !function() {\n        var cookies = document.cookie ? document.cookie.split(\';\') : [];\n        //                |   this less than is triggering probems\n        for (var i = 0; i ', type: 'text' } ]
     }], 'should parse a script tag');
 
+    html = `<div onclick="alert('hi!')">Click me!</div>`
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {
+            onclick: "alert('hi!')"
+        },
+        voidElement: false,
+        children: [ { content: 'Click me!', type: 'text' } ]
+    }], 'should parse attr values with quotes');
+
+    html = `<div onclick='alert("hi!")'>Click me!</div>`
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {
+            onclick: 'alert("hi!")'
+        },
+        voidElement: false,
+        children: [ { content: 'Click me!', type: 'text' } ],
+    }], 'should parse attr values with quotes, opposite');
+
     t.end();
 });
 
