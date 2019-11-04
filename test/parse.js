@@ -52,6 +52,39 @@ test('parse', function (t) {
     }]);
     t.equal(html, HTML.stringify(parsed));
 
+    html = '<!-- just a comment node -->';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+      type: 'comment',
+      comment: ' just a comment node '
+    }]);
+    t.equal(html, HTML.stringify(parsed));
+
+    html = '<div><h2>Comment below this header</h2><!-- just a comment node --></div>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        name: 'div',
+        type: 'tag',
+        attrs: {},
+        voidElement: false,
+        children: [{
+            attrs: {},
+            name: 'h2',
+            type: 'tag',
+            voidElement: false,
+            children: [{
+                content: 'Comment below this header',
+                type: 'text'
+            }]
+        },
+        {
+            type: 'comment' ,
+            comment: ' just a comment node ',
+        }]
+    }]);
+    t.equal(html, HTML.stringify(parsed));
+
+
     html = '<div>oh <strong>hello</strong> there! How are <span>you</span>?</div>';
     parsed = HTML.parse(html);
 
