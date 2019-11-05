@@ -84,6 +84,21 @@ test('parse', function (t) {
     }]);
     t.equal(html, HTML.stringify(parsed));
 
+    html = '<!---->'
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+      type: 'comment',
+      comment: ''
+    }]);
+    t.equal(html, HTML.stringify(parsed));
+
+    html = '<!---this comment starts with a hyphen b/c web developers love curveballs -->'
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+      type: 'comment',
+      comment: '-this comment starts with a hyphen b/c web developers love curveballs '
+    }]);
+    t.equal(html, HTML.stringify(parsed));
 
     html = '<div>oh <strong>hello</strong> there! How are <span>you</span>?</div>';
     parsed = HTML.parse(html);
