@@ -308,6 +308,31 @@ test('parse', function (t) {
     }], 'should handle unclosed void elements');
     t.equal(HTML.stringify(parsed), '<div><img/></div>');
 
+    html = '<!DOCTYPE html>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        attrs: { html: null },
+        children: [],
+        name: '!DOCTYPE',
+        type: 'tag',
+        voidElement: true
+    }], 'should handle attrs without values');
+    t.equal(HTML.stringify(parsed), html);
+
+    var html = '<input class="oh" disabled/>';
+    var parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'input',
+        attrs: {
+            class: 'oh',
+            disabled: null
+        },
+        voidElement: true,
+        children: []
+    }]);
+    t.equal(html, HTML.stringify(parsed));
+
     html = '<div></div><img>';
     parsed = HTML.parse(html);
 
