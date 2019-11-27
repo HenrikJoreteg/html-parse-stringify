@@ -303,6 +303,12 @@ test('parse', function (t) {
         children: []
     }], 'should not explode on trailing whitespace');
 
+    html = ' Hi There ';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'text', content: ' Hi There '
+    }], 'should handle text nodes at the top-level');
+
     html = '<div>Hi</div> There ';
     parsed = HTML.parse(html);
     t.deepEqual(parsed, [{
