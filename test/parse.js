@@ -382,7 +382,7 @@ test('parse', function (t) {
           var name = splitted[0];
         }
       }();
-      </script>`
+      </script>`;
     parsed = HTML.parse(html);
     t.deepEqual(parsed, [{
         type: 'tag',
