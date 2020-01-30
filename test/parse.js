@@ -441,6 +441,45 @@ test('parse', function (t) {
             { type: 'text', content: 'Try again' }
         ]
     }], 'should not go lower than the root level (-1)');
+
+    html = '<div><div><p>Hi There</p></span></div>almost root text</p><p>Try again</p></div>';
+    parsed = HTML.parse(html);
+    t.deepEqual(parsed, [{
+        type: 'tag',
+        name: 'div',
+        attrs: {},
+        voidElement: false,
+        children: [
+            {
+                type: 'tag',
+                name: 'div',
+                attrs: {},
+                voidElement: false,
+                children: [{
+                    type: 'tag',
+                    name: 'p',
+                    attrs: {},
+                    voidElement: false,
+                    children: [
+                        { type: 'text', content: 'Hi There' }
+                    ]
+                },
+                ]
+            },
+            {
+                type: 'text',
+                content: 'almost root text'
+            }, {
+                type: 'tag',
+                name: 'p',
+                attrs: {},
+                voidElement: false,
+                children: [
+                    { type: 'text', content: 'Try again' }
+                ]
+            }
+        ]
+    }], 'should not go lower than the root level (-1), and maintains proper tree');
     t.end();
 });
 
