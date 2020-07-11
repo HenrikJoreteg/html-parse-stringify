@@ -9,7 +9,6 @@ export default function parse(html, options) {
   options.components || (options.components = empty)
   const result = []
   const arr = []
-  const byTag = {}
   let current
   let level = -1
   let inComponent = false
@@ -47,8 +46,6 @@ export default function parse(html, options) {
           content: html.slice(start, html.indexOf('<', start)),
         })
       }
-
-      byTag[current.tagName] = current
 
       // if we're at root, push new base node
       if (level === 0) {

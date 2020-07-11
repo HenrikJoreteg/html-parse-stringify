@@ -2,8 +2,6 @@
 import test from 'tape'
 import HTML from '../src/index'
 
-console.log(HTML)
-
 test('parse', function (t) {
   let html = '<div class="oh"><p></p></div>'
   let parsed = HTML.parse(html)
