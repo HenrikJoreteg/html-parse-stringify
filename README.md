@@ -133,6 +133,11 @@ properties:
 - `voidElement` - `true` or `false`. Whether this tag is a known void element as defined by [spec](http://www.w3.org/html/wg/drafts/html/master/syntax.html#void-elements).
 - `children` - it will still have a `children` array, but it will always be empty.
 
+## changelog
+
+- `2.0.0` updated to more modern dependencies/build system. Switched to prettier, etc. No big feature differences, just new build system/project structure.
+- `1.0.0 - 1.0.3` no big changes, bug fixes and speed improvements.
+
 ## credits
 
 If this sounds interesting you should probably follow [@HenrikJoreteg](https://twitter.com/henrikjoreteg) and [@Philip_Roberts](https://twitter.com/philip_roberts) on twitter to see how this all turns out.
