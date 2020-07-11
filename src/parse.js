@@ -22,9 +22,23 @@ export default function parse(html, options) {
       }
     }
     const isOpen = tag.charAt(1) !== '/'
+    const isComment = tag.startsWith('<!--')
     const start = index + tag.length
     const nextChar = html.charAt(start)
     let parent
+
+    if (isComment) {
+      const comment = parseTag(tag)
+
+      // if we're at root, push new base node
+      if (level < 0) {
+        result.push(comment)
+        return result
+      }
+      parent = arr[level]
+      parent.children.push(comment)
+      return result
+    }
 
     if (isOpen) {
       level++

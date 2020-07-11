@@ -23,6 +23,9 @@ function stringify(buff, doc) {
         return buff
       }
       return buff + doc.children.reduce(stringify, '') + '</' + doc.name + '>'
+    case 'comment':
+      buff += '<!--' + doc.comment + '-->'
+      return buff
   }
 }
 

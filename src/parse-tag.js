@@ -19,6 +19,15 @@ export default function stringify(tag) {
     ) {
       res.voidElement = true
     }
+
+    // handle comment tag
+    if (res.name.startsWith('!--')) {
+      const endIndex = tag.indexOf('-->')
+      return {
+        type: 'comment',
+        comment: endIndex !== -1 ? tag.slice(4, endIndex) : '',
+      }
+    }
   }
 
   const reg = new RegExp(attrRE)
