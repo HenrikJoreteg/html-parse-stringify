@@ -135,7 +135,7 @@ properties:
 
 ## changelog
 
-- `2.0.0` updated to more modern dependencies/build system. Switched to prettier, etc. No big feature differences, just new build system/project structure.
+- `2.0.0` updated to more modern dependencies/build system. Switched to prettier, etc. No big feature differences, just new build system/project structure. Added support for top level text nodes thanks to @jperl. Added support for comments thanks to @pconerly.
 - `1.0.0 - 1.0.3` no big changes, bug fixes and speed improvements.
 
 ## credits
