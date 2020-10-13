@@ -90,6 +90,8 @@ export default function parse(html, options) {
         (current.voidElement || current.name === tag.slice(2, -1))
       ) {
         level--
+        // move current up a level to match the end tag
+        current = level === -1 ? result : arr[level]
       }
       if (!inComponent && nextChar !== '<' && nextChar) {
         // trailing text node
