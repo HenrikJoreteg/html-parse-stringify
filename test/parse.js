@@ -55,6 +55,54 @@ test('parse', function (t) {
   ])
   t.equal(html, HTML.stringify(parsed))
 
+  html = '<div class="oh"><p><span>hi</span></p><p>bye</p></div>'
+  parsed = HTML.parse(html)
+  t.deepEqual(parsed, [
+    {
+      type: 'tag',
+      name: 'div',
+      attrs: {
+        class: 'oh',
+      },
+      voidElement: false,
+      children: [
+        {
+          type: 'tag',
+          name: 'p',
+          attrs: {},
+          voidElement: false,
+          children: [
+            {
+              type: 'tag',
+              name: 'span',
+              attrs: {},
+              voidElement: false,
+              children: [
+                {
+                  type: 'text',
+                  content: 'hi',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'tag',
+          name: 'p',
+          attrs: {},
+          voidElement: false,
+          children: [
+            {
+              type: 'text',
+              content: 'bye',
+            },
+          ],
+        },
+      ],
+    },
+  ])
+  t.equal(html, HTML.stringify(parsed))
+
   html = '<!-- just a comment node -->'
   parsed = HTML.parse(html)
   t.deepEqual(parsed, [
