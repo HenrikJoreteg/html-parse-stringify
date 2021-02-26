@@ -1,4 +1,4 @@
-const tagRE = /<[a-zA-Z\-\!\/](?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])*>/g
+const tagRE = /<[a-zA-Z\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g
 import parseTag from './parse-tag'
 
 // re-used obj for quick lookups of components

@@ -766,3 +766,19 @@ test('simple speed sanity check', function (t) {
 
   t.end()
 })
+
+test('ReDoS vulnerability reported by Sam Sanoop of Snyk', function (t) {
+  const start = Date.now()
+  // reported problematic string
+  HTML.parse(
+    "<!''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''!"
+  )
+  // other variant
+  HTML.parse(
+    '<!""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""!'
+  )
+  const duration = Date.now() - start
+
+  t.ok(duration < 100, 'should not hang')
+  t.end()
+})
