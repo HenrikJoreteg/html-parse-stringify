@@ -44,6 +44,7 @@
     "build": "microbundle",
     "format": "prettier --write .",
     "prebuild": "rm -rf dist",
+    "prepublish": "npm run build",
     "test": "tape -r esm test/* | tap-spec"
   }
 }
