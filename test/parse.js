@@ -230,6 +230,53 @@ test('parse', function (t) {
   ])
   t.equal(html, HTML.stringify(parsed))
 
+  html = '<div>Testing <strong>multiple <em>nested</em></strong> tags</div>'
+  parsed = HTML.parse(html)
+
+  t.deepEqual(parsed, [
+    {
+      type: 'tag',
+      name: 'div',
+      attrs: {},
+      voidElement: false,
+      children: [
+        {
+          type: 'text',
+          content: 'Testing ',
+        },
+        {
+          type: 'tag',
+          name: 'strong',
+          attrs: {},
+          voidElement: false,
+          children: [
+            {
+              type: 'text',
+              content: 'multiple ',
+            },
+            {
+              type: 'tag',
+              name: 'em',
+              attrs: {},
+              voidElement: false,
+              children: [
+                {
+                  type: 'text',
+                  content: 'nested',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          type: 'text',
+          content: ' tags',
+        },
+      ],
+    },
+  ])
+  t.equal(html, HTML.stringify(parsed))
+
   html = '<div class="handles multiple classes" and="attributes"></div>'
   parsed = HTML.parse(html)
 
