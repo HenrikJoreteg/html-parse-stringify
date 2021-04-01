@@ -135,6 +135,7 @@ properties:
 
 ## changelog
 
+- `2.1.1` Merged #41 which, fixed an issue with tag nesting. Thanks [@ericponto](https://github.com/ericponto).
 - `2.1.0` Merged support for numeric tags. This allows a use case described in [this PR](https://github.com/HenrikJoreteg/html-parse-stringify/pull/43). Thanks [@kachkaev](https://github.com/kachkaev).
 - `2.0.3` Fixed failed publish. Accidentally published an empty package :sweat_smile:
 - `2.0.2` Fixed incorrect attribution for vulnerability disclosure. The vulnerability was discovered by Yeting Li. Sam Sanoop was the one who reached out to me about it.
