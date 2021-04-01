@@ -1,7 +1,7 @@
 {
   "name": "html-parse-stringify",
   "description": "Parses well-formed HTML (meaning all tags closed) into an AST and back. quickly.",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "author": "Henrik Joreteg <henrik@joreteg.com>",
   "bugs": {
     "url": "https://github.com/henrikjoreteg/html-parse-stringify/issues"
