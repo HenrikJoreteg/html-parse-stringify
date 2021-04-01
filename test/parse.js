@@ -230,6 +230,57 @@ test('parse', function (t) {
   ])
   t.equal(html, HTML.stringify(parsed))
 
+  html = '<0>oh <1>hello</1> there! How are <2>you</2>?</0>'
+  parsed = HTML.parse(html)
+
+  t.deepEqual(parsed, [
+    {
+      type: 'tag',
+      name: '0',
+      attrs: {},
+      voidElement: false,
+      children: [
+        {
+          type: 'text',
+          content: 'oh ',
+        },
+        {
+          type: 'tag',
+          name: '1',
+          attrs: {},
+          voidElement: false,
+          children: [
+            {
+              type: 'text',
+              content: 'hello',
+            },
+          ],
+        },
+        {
+          type: 'text',
+          content: ' there! How are ',
+        },
+        {
+          type: 'tag',
+          name: '2',
+          attrs: {},
+          voidElement: false,
+          children: [
+            {
+              type: 'text',
+              content: 'you',
+            },
+          ],
+        },
+        {
+          type: 'text',
+          content: '?',
+        },
+      ],
+    },
+  ])
+  t.equal(html, HTML.stringify(parsed))
+
   html = '<div class="handles multiple classes" and="attributes"></div>'
   parsed = HTML.parse(html)
 
