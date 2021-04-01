@@ -135,6 +135,7 @@ properties:
 
 ## changelog
 
+- `2.1.0` Merged support for numeric tags. This allows a use case described in [this PR](https://github.com/HenrikJoreteg/html-parse-stringify/pull/43). Thanks [@kachkaev](https://github.com/kachkaev).
 - `2.0.3` Fixed failed publish. Accidentally published an empty package :sweat_smile:
 - `2.0.2` Fixed incorrect attribution for vulnerability disclosure. The vulnerability was discovered by Yeting Li. Sam Sanoop was the one who reached out to me about it.
 - `2.0.1` Addressing a reported regular expression denial of service issue found by [Yeting Li](https://github.com/yetingli) and reported to me by [Sam Sanoop](https://twitter.com/snoopysecurity) of [Snyk](https://snyk.io/) THANK YOU!. The issue was that sending certain input would cause one of the regular expressions we used to lock up and not finish, freezing the process. See the test that was added for details. To be clear, this lib wasn't meant for parsing non-well formed HTML. But, better safe than sorry! So we're fixing it.
