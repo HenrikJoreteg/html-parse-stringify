@@ -881,3 +881,79 @@ test('ReDoS vulnerability reported by Sam Sanoop of Snyk', function (t) {
   t.ok(duration < 100, 'should not hang')
   t.end()
 })
+
+test('whitespace', function (t) {
+  let html = '<div></div>\n'
+  let parsed = HTML.parse(html)
+  t.deepEqual(parsed, [{
+    type: 'tag',
+    name: 'div',
+    attrs: {},
+    voidElement: false,
+    children: []
+  }], 'should not explode on trailing whitespace')
+
+  html = '<div>Hi</div>\n\n <span>There</span> \t <div> </div>'
+  parsed = HTML.parse(html, { respectWhitespace: true })
+  t.deepEqual(parsed, [{
+    type: 'tag',
+    name: 'div',
+    attrs: {},
+    voidElement: false,
+    children: [
+      { type: 'text', content: 'Hi' }
+    ]
+  },{
+    type: 'text',
+    content: ' '
+  },
+  {
+    type: 'tag',
+    name: 'span',
+    attrs: {},
+    voidElement: false,
+    children: [
+      { type: 'text', content: 'There' }
+    ]
+  },{
+    type: 'text',
+    content: ' '
+  },{
+    type: 'tag',
+    name: 'div',
+    attrs: {},
+    voidElement: false,
+    children: [
+      { type: 'text', content: ' ' }
+    ]
+  }], 'should collapse whitespace')
+  // See https://www.w3.org/TR/html4/struct/text.html#h-9.1
+
+  html = '<div>Hi</div> <span>There</span> \t <iframe></iframe>'
+  parsed = HTML.parse(html)
+  t.deepEqual(parsed, [{
+    type: 'tag',
+    name: 'div',
+    attrs: {},
+    voidElement: false,
+    children: [
+      { type: 'text', content: 'Hi' }
+    ]
+  },{
+    type: 'tag',
+    name: 'span',
+    attrs: {},
+    voidElement: false,
+    children: [
+      { type: 'text', content: 'There' }
+    ]
+  },{
+    type: 'tag',
+    name: 'iframe',
+    attrs: {},
+    voidElement: false,
+    children: []
+  }], 'should remove text nodes that are nothing but whitespace if no respectWhitespace option is passed')
+
+  t.end()
+})
