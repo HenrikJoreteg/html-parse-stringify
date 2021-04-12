@@ -1,5 +1,7 @@
-const tagRE = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g
 import parseTag from './parse-tag'
+
+const tagRE = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g
+const whitespaceRE = /^\s*$/
 
 // re-used obj for quick lookups of components
 const empty = Object.create(null)
@@ -105,8 +107,8 @@ export default function parse(html, options) {
         let content = html.slice(start, end === -1 ? undefined : end)
         // if a node is nothing but whitespace, collapse it as the spec states:
         // https://www.w3.org/TR/html4/struct/text.html#h-9.1
-        if (/^\s*$/.test(content)) {
-          content = ' ';
+        if (whitespaceRE.test(content)) {
+          content = ' '
         }
         // don't add whitespace-only text nodes if they would be trailing text nodes
         // or if they would be leading whitespace-only text nodes:
