@@ -936,3 +936,39 @@ test('whitespace', function (t) {
 
   t.end()
 })
+
+test('uppercase tags', function (t) {
+  const html = '<0>click <Link>here</Link> for more</0>'
+  const parsed = HTML.parse(html)
+  t.deepEqual(parsed, [
+    {
+      "type": "tag",
+      "name": "0",
+      "voidElement": false,
+      "attrs": {},
+      "children": [
+        {
+          "type": "text",
+          "content": "click "
+        },
+        {
+          "type": "tag",
+          "name": "Link",
+          "voidElement": false,
+          "attrs": {},
+          "children": [
+            {
+              "type": "text",
+              "content": "here"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "content": " for more"
+        }
+      ]
+    }
+  ], 'should handle uppercase tags correctly')
+  t.end()
+})
