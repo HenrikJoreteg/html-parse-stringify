@@ -135,6 +135,7 @@ properties:
 
 ## changelog
 
+- `3.0.1` Merged #47 which makes void elements check case insensitive. Thanks again, [@adrai](https://github.com/adrai) for this contribution!
 - `3.0.0` Merged #46 which fixed an issue with handling of whitespace. Doing major version bump since this changes behavior if you have whitespace only nodes (see merged PR and #45 for more details). Thanks [@adrai](https://github.com/adrai) for this contribution!
 - `2.1.1` Merged #41 which fixed an issue with tag nesting. Thanks [@ericponto](https://github.com/ericponto).
 - `2.1.0` Merged support for numeric tags. This allows a use case described in [this PR](https://github.com/HenrikJoreteg/html-parse-stringify/pull/43). Thanks [@kachkaev](https://github.com/kachkaev).
