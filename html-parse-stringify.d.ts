@@ -4,7 +4,7 @@ declare module htmlParseStringify {
   export interface htmlParseStringify {
     new (): htmlParseStringify
     parse_tag(tag: string): IDoc
-    parse(html: string, options: IOptions): Array<any>
+    parse(html: string, options?: IOptions): Array<any>
     stringify(doc: IDoc): string
   }
 
@@ -13,7 +13,7 @@ declare module htmlParseStringify {
     content?: string
     voidElement: boolean
     name: string
-    attrs: {}
+    attrs: Record<string, string>
     children: IDoc[]
   }
 
