@@ -17,7 +17,8 @@
     "tape": "5.0.1"
   },
   "files": [
-    "dist"
+    "dist",
+    "html-parse-stringify.d.ts"
   ],
   "homepage": "https://github.com/henrikjoreteg/html-parse-stringify",
   "keywords": [
@@ -31,6 +32,7 @@
   "module": "dist/html-parse-stringify.module.js",
   "source": "src/index.js",
   "unpkg": "dist/html-parse-stringify.umd.js",
+  "types": "html-parse-stringify.d.ts",
   "prettier": {
     "arrowParens": "avoid",
     "singleQuote": true,
