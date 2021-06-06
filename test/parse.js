@@ -238,6 +238,7 @@ test('parse', function (t) {
       children: [
         { type: "text", content: " " },
         { type: "comment", comment: " First comment " },
+        { type: "text", content: " " },
         {
           type: "tag",
           name: "span",
