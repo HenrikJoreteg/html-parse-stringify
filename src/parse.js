@@ -48,6 +48,14 @@ export default function parse(html, options) {
       }
       parent = arr[level]
       parent.children.push(comment)
+
+      const text = html.slice(start, html.indexOf('<', start));
+      if (text.length > 0) {
+        parent.children.push({
+          type: 'text',
+          content: text
+        })
+      }
       return result
     }
 

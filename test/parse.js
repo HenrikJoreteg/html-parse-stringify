@@ -227,6 +227,32 @@ test('parse', function (t) {
   ])
   t.equal(html, HTML.stringify(parsed))
 
+  html = '<div> <!-- First comment --> <span>Hi</span> <!-- Another comment --> Something</div>'
+  parsed = HTML.parse(html)
+  t.deepEqual(parsed, [
+    {
+      type: "tag",
+      name: "div",
+      voidElement: false,
+      attrs: {},
+      children: [
+        { type: "text", content: " " },
+        { type: "comment", comment: " First comment " },
+        { type: "text", content: " " },
+        {
+          type: "tag",
+          name: "span",
+          voidElement: false,
+          attrs: {},
+          children: [{ type: "text", content: "Hi" }],
+        },
+        { type: "text", content: " " },
+        { type: "comment", comment: " Another comment " },
+        { type: "text", content: " Something" },
+      ],
+    }
+  ])
+
   html = '<div>oh <strong>hello</strong> there! How are <span>you</span>?</div>'
   parsed = HTML.parse(html)
 
@@ -850,7 +876,7 @@ test('simple speed sanity check', function (t) {
       total += stepAverage
       waitCount = waitLoopSize
       // forcing a bit of a pause between tests
-      while (waitCount--) {}
+      while (waitCount--) { }
     }
   }
 
@@ -908,7 +934,7 @@ test('whitespace', function (t) {
     children: [
       { type: 'text', content: 'Hi' }
     ]
-  },{
+  }, {
     type: 'text',
     content: ' '
   },
@@ -920,10 +946,10 @@ test('whitespace', function (t) {
     children: [
       { type: 'text', content: 'There' }
     ]
-  },{
+  }, {
     type: 'text',
     content: ' '
-  },{
+  }, {
     type: 'tag',
     name: 'div',
     attrs: {},
