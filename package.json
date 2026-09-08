@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "esm": "3.2.25",
-    "microbundle": "0.12.2",
+    "microbundle": "0.15.1",
     "prettier": "2.0.5",
     "tap-spec": "2.1.2",
     "tape": "5.0.1"
